@@ -92,6 +92,8 @@ els.surveyForm.addEventListener("submit", async (e) => {
     priority: priorityInput.value,
     description: document.getElementById("description").value.trim(),
     inspector: document.getElementById("inspector").value.trim(),
+    studentClass: document.getElementById("studentClass").value.trim(),  
+    studentId: document.getElementById("studentId").value.trim(),
     photo: pendingPhotoBlob || null,
     status: "pending",
     createdAt: Date.now(),
@@ -169,6 +171,8 @@ async function syncOne(record) {
       priority: record.priority,
       description: record.description,
       inspector: record.inspector,
+      studentClass: record.studentClass,   
+      studentId: record.studentId,  
       createdAt: record.createdAt,
       hasPhoto: !!record.photo,
     };
@@ -229,6 +233,7 @@ async function renderLog() {
         <div>
           <div class="record-title">${escapeHTML(r.building)} — ${escapeHTML(r.room)}</div>
           <div class="record-meta">${escapeHTML(r.issueType)} · Ưu tiên ${escapeHTML(r.priority)} · #${r.id} · ${fmtDate(r.createdAt)}</div>
+          <div class="record-meta">${escapeHTML(r.inspector)} · Lớp ${escapeHTML(r.studentClass)} · MSSV ${escapeHTML(r.studentId)}</div>
         </div>
         <span class="record-status">${r.status === "synced" ? "Đã đồng bộ" : "Chờ đồng bộ"}</span>
       </div>

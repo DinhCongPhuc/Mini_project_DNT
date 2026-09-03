@@ -479,3 +479,6 @@ label:focus-within {
 @media (max-width: 420px) {
   .ticket-head, .ticket-body { padding-left: 16px; padding-right: 16px; }
 }
+.record-meta + .record-meta {
+  margin-top: 2px;
+}

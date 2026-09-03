@@ -104,6 +104,8 @@ async function syncPendingRecords() {
         priority: record.priority,
         description: record.description,
         inspector: record.inspector,
+        studentClass: record.studentClass,  
+        studentId: record.studentId,  
         createdAt: record.createdAt,
         hasPhoto: !!record.photo,
       };
