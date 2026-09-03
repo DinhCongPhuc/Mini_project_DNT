@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>VKU Field Survey</title>
+<meta name="description" content="Ứng dụng khảo sát cơ sở vật chất VKU — hoạt động offline" />
+<meta name="theme-color" content="#1F2933" />
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" href="icons/icon-192.png" />
+<link rel="apple-touch-icon" href="icons/icon-192.png" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header class="status-bar">
+  <span class="brand">VKU Field Survey</span>
+  <span class="status-pill offline" id="netStatus">
+    <span class="status-dot"></span>
+    <span id="netStatusText">Đang kiểm tra…</span>
+  </span>
+</header>
+
+<nav class="tabs">
+  <button class="tab-btn active" data-view="formView" id="tabForm">
+    Phiếu mới
+  </button>
+  <button class="tab-btn" data-view="logView" id="tabLog">
+    Nhật ký <span class="count" id="logCount"></span>
+  </button>
+</nav>
+
+<main>
+
+  <!-- ===== FORM VIEW ===== -->
+  <section class="view active" id="formView">
+    <div class="ticket">
+      <div class="ticket-head">
+        <p class="kicker">PHIẾU KIỂM TRA CƠ SỞ VẬT CHẤT</p>
+        <h1>Ghi nhận hiện trường</h1>
+      </div>
+      <div class="ticket-body">
+        <form id="surveyForm" novalidate>
+
+          <div class="field">
+            <label for="building">Tòa nhà</label>
+            <select id="building" required>
+              <option value="" disabled selected>Chọn tòa nhà</option>
+              <option>Tòa A - Hành chính</option>
+              <option>Tòa B - Giảng đường</option>
+              <option>Tòa C - Thực hành</option>
+              <option>Tòa D - Thư viện</option>
+              <option>Ký túc xá</option>
+              <option>Sân bãi ngoài trời</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="room">Phòng / khu vực</label>
+            <input type="text" id="room" placeholder="Ví dụ: Phòng A203, Sảnh tầng 1..." required />
+          </div>
+
+          <div class="field">
+            <label for="issueType">Loại vấn đề</label>
+            <select id="issueType" required>
+              <option value="" disabled selected>Chọn loại vấn đề</option>
+              <option>Điện</option>
+              <option>Nước</option>
+              <option>Vệ sinh</option>
+              <option>Thiết bị / nội thất</option>
+              <option>Mạng / thiết bị CNTT</option>
+              <option>Khác</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Mức độ ưu tiên</label>
+            <div class="priority-group">
+              <label class="priority-option">
+                <input type="radio" name="priority" value="Thấp" required />
+                <span>Thấp</span>
+              </label>
+              <label class="priority-option">
+                <input type="radio" name="priority" value="Trung bình" />
+                <span>Trung bình</span>
+              </label>
+              <label class="priority-option">
+                <input type="radio" name="priority" value="Cao" />
+                <span>Cao</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="description">Mô tả chi tiết</label>
+            <textarea id="description" placeholder="Mô tả tình trạng bạn quan sát được..." required></textarea>
+          </div>
+
+          <div class="field">
+            <label for="inspector">Người kiểm tra</label>
+            <input type="text" id="inspector" placeholder="Họ tên của bạn" required />
+          </div>
+
+          <div class="field">
+            <label>Ảnh hiện trường (tuỳ chọn)</label>
+            <label class="photo-input" for="photo">
+              <input type="file" id="photo" accept="image/*" capture="environment" />
+              <span class="prompt" id="photoPrompt">Chạm để chụp hoặc chọn ảnh</span>
+            </label>
+            <img class="photo-preview" id="photoPreview" alt="Ảnh xem trước" />
+          </div>
+
+          <button type="submit" class="btn btn-primary">Lưu phiếu kiểm tra</button>
+          <p class="hint" style="text-align:center; margin-top:10px;">
+            Phiếu được lưu ngay trên máy, kể cả khi không có mạng.
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LOG VIEW ===== -->
+  <section class="view" id="logView">
+    <div class="log-toolbar">
+      <h2>Nhật ký kiểm tra</h2>
+      <button class="sync-btn" id="syncBtn">Đồng bộ ngay</button>
+    </div>
+    <div class="record-list" id="recordList"></div>
+    <div class="empty-state" id="emptyState" style="display:none;">
+      <div class="glyph">—</div>
+      <p>Chưa có phiếu nào. Chuyển sang tab "Phiếu mới" để bắt đầu ghi nhận.</p>
+    </div>
+  </section>
+
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/db.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
