@@ -3,3 +3,15 @@ __pycache__/
 .DS_Store
 .wrangler/
 node_modules/
+# Node
+node_modules/
+
+# Android / Capacitor
+android/app/build/
+android/build/
+android/.gradle/
+android/local.properties
+android/.idea/
+android/captures/
+android/app/release/
+*.iml

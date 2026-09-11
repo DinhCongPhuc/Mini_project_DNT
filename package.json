@@ -1,0 +1,26 @@
+{
+  "name": "vku-field-survey-pwa",
+  "version": "1.0.0",
+  "description": "Ứng dụng web tiến bộ (Progressive Web App) cho phép sinh viên/nhân viên khảo sát tình trạng cơ sở vật chất trong khuôn viên trường, **hoạt động đầy đủ ngay cả khi không có kết nối mạng**. Đây là Mini-Project 1 trong chuỗi bài tập Phát triển ứng dụng đa nền tảng — bước tiếp theo sẽ đóng gói PWA này thành APK Android bằng Capacitor.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DinhCongPhuc/Mini_project_DNT.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/DinhCongPhuc/Mini_project_DNT/issues"
+  },
+  "homepage": "https://github.com/DinhCongPhuc/Mini_project_DNT#readme",
+  "dependencies": {
+    "@capacitor/android": "^8.5.1",
+    "@capacitor/cli": "^8.5.1",
+    "@capacitor/core": "^8.5.1"
+  }
+}
