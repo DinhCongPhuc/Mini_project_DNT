@@ -9,7 +9,7 @@
  *    trở lại, kể cả khi người dùng đã đóng tab.
  */
 
-const CACHE_VERSION = "v1";
+const CACHE_VERSION = "v2";
 const CACHE_NAME = `vku-survey-shell-${CACHE_VERSION}`;
 
 const APP_SHELL = [
